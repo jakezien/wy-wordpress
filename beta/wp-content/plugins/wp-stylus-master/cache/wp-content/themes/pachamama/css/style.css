@@ -1,0 +1,730 @@
+/*
+*
+*  Golden Grid System (1.0) <http//goldengridsystem.com/>
+*  by Joni Korpi        <http//jonikorpi.com/>
+*  licensed under MIT     <http//opensource.org/licenses/mit-license.php>
+*
+*/
+/*
+*
+*  Margin, padding, and border resets
+*  except for form elements
+*
+*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+menu,
+time,
+mark,
+audio,
+video,
+canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/*
+*
+*  Consistency fixes
+*  adopted from http//necolas.github.com/normalize.css/
+*
+*/
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  min-height: 100%;
+  font-size: 100%;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+audio,
+canvas,
+video {
+  display: block;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+b,
+strong {
+  font-weight: bold;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+input,
+textarea,
+button,
+select {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+textarea {
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*
+*
+*  Simple fluid media
+*
+*/
+figure {
+  position: relative;
+}
+figure img,
+figure object,
+figure embed,
+figure video {
+  max-width: 100%;
+  display: block;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+/*
+*
+* Zoomable baseline grid
+* type size presets
+*
+*/
+body {
+/* 16px / 24px */
+  font-size: 1em;
+  line-height: 1.5em;
+}
+.small {
+/* 13px / 18px */
+  font-size: 0.8125em;
+  line-height: 1.3846153846153846em;
+}
+.normal,
+h3 {
+/* 16px / 24px */
+  font-size: 1em;
+  line-height: 1.5em;
+/* 24 */
+}
+.large,
+h2,
+h1 {
+/* 26 / 36px */
+  font-size: 1.625em;
+  line-height: 1.3846153846153846em;
+}
+.huge {
+/* 42px / 48px */
+  font-size: 2.625em;
+  line-height: 1.1428571428571428em;
+}
+.massive {
+/* 68px / 72px */
+  font-size: 4.25em;
+  line-height: 1.0588235294117647em;
+}
+.gigantic {
+/* 110px / 120px */
+  font-size: 6.875em;
+  line-height: 1.0909090909090908em;
+}
+/*
+*
+*  Four-column grid active
+*  ----------------------------------------
+*  Margin   | #  1   2   3   4   |   Margin
+*  5.55555% | %  25  50  75  100 | 5.55555%
+*
+*/
+header,
+#twoway {
+  margin: 0 5.555555555555555%;
+}
+h1,
+h2 {
+  margin: 0.9230769230769231em 0 1.3846153846153846em;
+}
+h2 {
+  font-weight: normal;
+}
+h3 {
+  margin: 1.5em 0 1.5em;
+}
+/*
+*  Simple elastic gutters
+*  Note box-sizing will not work in IE6-7
+*/
+.wrapper {
+  position: relative;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.grid {
+  margin-left: 5.55555%;
+  margin-right: 5.55555%;
+  position: relative;
+  z-index: 0;
+}
+/*
+*
+*  Fixes for IE6-8
+*  http//jonikorpi.com/leaving-old-IE-behind/
+*
+*/
+.ie body {
+  width: 40em;
+  margin: 0 auto;
+  font-size: 1.0625em;
+}
+.ie h1 {
+/* 42px / 48px */
+  font-size: 2.625em;
+  line-height: 1.1428571428571428em;
+  margin: 1.1428571428571428em 0 0.5714285714285714em;
+}
+/* @media screen and (min-width: 640px) */
+@media screen and (min-width: 40em) {
+  body {
+/* Zoom baseline grid to 17/16 = 1.0625 */
+    font-size: 1.0625em;
+  }
+  h1 {
+/* 42px / 48px */
+    font-size: 2.625em;
+    line-height: 1.1428571428571428em;
+    margin: 1.1428571428571428em 0 0.5714285714285714em;
+  }
+}
+/*
+*
+*  Eight-column grid active
+*  ----------------------------------------------------------------------
+*  Margin   | #  1     2     3     4     5     6     7     8   |   Margin
+*  5.55555% | %  12.5  25.0  37.5  50.0  62.5  75.0  87.5  100 | 5.55555%
+*
+*
+*/
+/* @media screen and (min-width: 720px) */
+@media screen and (min-width: 45em) {
+  body {
+/* Reset baseline grid to 16/16 = 1 */
+    font-size: 1em;
+  }
+  #twoway .wrapper {
+    float: left;
+    width: 50%;
+  }
+}
+/* @media screen and (min-width: 888px) */
+@media screen and (min-width: 55.5em) {
+  body {
+/* Zoom baseline grid to 17/16 = 1.0625 */
+    font-size: 1.0625em;
+  }
+}
+/* @media screen and (min-width: 984px) */
+@media screen and (min-width: 61.5em) {
+  body {
+/* Reset baseline grid to 16/16 = 1.0 */
+    font-size: 1em;
+  }
+  header,
+  #twoway {
+    margin: 0 16.666666666666664%;
+  }
+}
+/* @media screen and (min-width: 1200px) */
+@media screen and (min-width: 75em) {
+  body {
+/* Zoom baseline grid to 17/16 = 1.0625 */
+    font-size: 1.0625em;
+  }
+}
+/* @media screen and (min-width: 1392px) */
+@media screen and (min-width: 87em) {
+  body {
+/* Reset baseline grid to 16/16 = 1.0 */
+    font-size: 1em;
+  }
+  header,
+  #twoway {
+    margin: 0 27.77777777777778%;
+  }
+}
+/* @media screen and (min-width: 1680px) */
+@media screen and (min-width: 105em) {
+  body {
+/* Zoom baseline grid to 17/16 = 1.0625 */
+    font-size: 1.0625em;
+  }
+}
+/*
+*
+*  Sixteen-column grid active
+*  ----------------------------------------------------------------------------------------------------------------------
+*  Margin   | #  1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16  |   Margin
+*  5.55555% | %  6.25  12.5  18.75 25.0  31.25 37.5  43.75 50.0  56.25 62.5  68.75 75.0  81.25 87.5  93.75 100 | 5.55555%
+*
+*
+*/
+/* @media screen and (min-width: 1872px) */
+@media screen and (min-width: 117em) {
+  header,
+  #twoway {
+    margin: 0 5.555555555555555%;
+  }
+  header .wrapper {
+    width: 37.5%;
+    margin-left: 25%;
+  }
+  #twoway .wrapper {
+    width: 25%;
+  }
+  #twoway .wrapperfirst-child {
+    margin-left: 25%;
+  }
+}
+/* @media screen and (min-width: 2080px) */
+@media screen and (min-width: 130em) {
+  body {
+/* Zoom baseline grid to 18/16 = 1.125 */
+    font-size: 1.125em;
+    max-width: 160em;
+  }
+}
+#home li {
+  width: 12.5%;
+}
+#home h1 {
+  font-family: "Gentium Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #f00;
+  width: 37.5%;
+}
+#home li {
+  display: inline-block;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#donate-btn {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 60px;
+  background: #ff0;
+  box-sizing: border-box;
+  padding: 1em;
+  font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  z-index: 2;
+}
+#donate {
+  transition: opacity 0.66s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(196,211,242,0.35);
+  z-index: 10;
+  box-sizing: border-box;
+  padding: 10em;
+}
+#donate.display-none {
+  display: none;
+}
+#donate.hidden {
+  opacity: 0;
+}
+#qeros p {
+  font-size: 2em;
+  line-height: 1.25em;
+}
+#qeros #cover .bg {
+  background-image: url("../images/qeros-cover.jpg");
+  background-position-x: 100%;
+  background-position-y: 30%;
+}
+#qeros #cover .wrapper {
+  width: 44.44444444444444%;
+  left: 50%;
+  text-align: center;
+}
+#qeros #cover h1 {
+  font-family: "Gentium Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.04em;
+  font-size: 8em;
+  margin-top: 1.75em;
+  margin-bottom: 0;
+  text-rendering: optimizeLegibility;
+  color: #da1b83;
+  position: relative;
+  left: -10px;
+}
+#qeros #cover h1 span {
+  position: relative;
+  left: -10px;
+}
+#qeros #cover h2 {
+  font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.5em;
+  margin: 0;
+  position: relative;
+  top: -0.75em;
+  left: -4px;
+}
+#qeros #textile {
+  height: auto;
+  font-family: "Gentium Book Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  color: #d83027;
+  background-color: #fff;
+}
+#qeros #textile .bg {
+  background-image: url("../images/qeros-textile.jpg");
+  background-size: auto 100%;
+  background-position-x: left;
+  left: 55.55555555555556%;
+}
+#qeros #textile #textile-container {
+  margin-left: 5.55555%;
+  margin-right: 5.55555%;
+  position: relative;
+  z-index: 0;
+  padding: 6em 0;
+  width: 50%;
+}
+#qeros #crowd {
+  background-position-y: 80%;
+}
+#qeros #crowd-caption p {
+  width: 61.11111111111111%;
+}
+#qeros #portrait-caption p {
+  width: 61.11111111111111%;
+}
+#qeros #llamas-caption p {
+  width: 61.11111111111111%;
+}
+#qeros #dance-caption p {
+  width: 61.11111111111111%;
+}
+/* @media screen and (min-width: 984px) */
+@media screen and (min-width: 61.5em) {
+  #qeros #textile .bg {
+    background-size: auto 120%;
+  }
+}
+#expeditions #cover {
+  background-image: url("../images/expeditions-cover.jpg");
+  background-size: cover;
+  background-position: center 80%;
+  height: 80%;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+#expeditions #cover h1 {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.025em;
+  font-size: 4em;
+  color: #fff;
+  position: relative;
+  top: -0.25em;
+}
+#expeditions #text {
+  margin-left: 5.55555%;
+  margin-right: 5.55555%;
+  position: relative;
+  z-index: 0;
+  padding: 4em 0 5em 0;
+  color: #073f6e;
+}
+#expeditions #text .wrapper {
+  width: 44.44444444444444%;
+}
+#expeditions #text h2 {
+  font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  line-height: 1.25em;
+  margin: 0 0 1em 0;
+}
+#expeditions #text p {
+  font-family: "Gentium Book Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-size: 2em;
+  line-height: 1.25em;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.the-page {
+  height: 100%;
+  transition: -webkit-filter 0.66s ease-in-out;
+}
+section {
+  overflow: hidden;
+  position: relative;
+  background-repeat: no-repeat;
+  transition: bottom 0.2s ease, background-position-y 0.1s ease;
+}
+.cover {
+  height: 100%;
+  z-index: 2;
+  cursor: url("../images/arrow.svg"), auto;
+}
+.cover .bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease;
+  transform: scaleX(-1);
+}
+.caption {
+  font-family: "Gentium Book Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  color: #d83027;
+  line-height: 1.33em;
+  padding: 4em 0;
+  background: #fff;
+  width: 100%;
+}
+.fixed-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center center;
+  height: 117%;
+  width: 100%;
+}
+.img-placeholder {
+  height: 85%;
+  background: transparent;
+  background-size: 105% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fixed {
+  position: fixed;
+  z-index: 1;
+  bottom: -2em;
+}
+.no-cover {
+  background-size: auto 100%;
+  background-position: center center;
+  background-attachment: scroll;
+}
+#cover-arrow {
+  width: 30px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+

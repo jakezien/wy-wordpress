@@ -1,0 +1,65 @@
+urlbase = '../images/'
+wyRed = #d83027
+wyMagenta = #DA1B83
+
+NoLiga()
+  -moz-font-feature-settings: "liga=0";
+  -ms-font-feature-settings: "liga" 0;
+  -webkit-font-feature-settings: "liga" 0;
+  -o-font-feature-settings: "liga" 0;
+  font-feature-settings: "liga" 0;
+
+Kern()
+  text-rendering:optimizeLegibility;
+  -moz-font-feature-settings:"kern" 1; 
+  -moz-font-feature-settings:"kern=1"; 
+  -ms-font-feature-settings:"kern" 1; 
+  -o-font-feature-settings:"kern" 1; 
+  -webkit-font-feature-settings:"kern" 1; 
+  font-feature-settings:"kern" 1;
+
+KernNoLiga()
+  text-rendering:optimizeLegibility;
+  -moz-font-feature-settings:"kern" 1, "liga" 0; 
+  -moz-font-feature-settings:"kern=1, liga=0"; 
+  -ms-font-feature-settings:"kern" 1, "liga" 0; 
+  -o-font-feature-settings:"kern" 1, "liga" 0; 
+  -webkit-font-feature-settings:"kern" 1, "liga" 0; 
+  font-feature-settings:"kern" 1, "liga" 0;
+
+Smooth()
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+ApercuLight()
+  font-family: "Apercu Light", "Helvetica Neue", Helvetica, sans-serif;
+  Kern();
+  Smooth();
+
+Apercu()
+  font-family: "Apercu Regular", "Helvetica Neue", Helvetica, sans-serif;
+  Kern();
+  Smooth();
+
+ApercuBold()
+  font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
+  Kern();
+  Smooth();
+
+Gentium()
+  font-family: "Gentium Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: normal;
+  Kern();
+  Smooth();
+
+GentiumBook()
+  font-family: "Gentium Book Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: normal;
+  Kern();
+
+GentiumBold() 
+  font-family: "Gentium Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: bold;
+  Kern();
+  Smooth();

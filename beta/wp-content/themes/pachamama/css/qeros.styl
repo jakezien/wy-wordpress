@@ -1,0 +1,92 @@
+#qeros
+  p
+    font-size 2em
+    line-height 1.25em
+
+  #cover 
+    .bg
+      background-image url(urlbase 'qeros-cover.jpg')
+      background-position-x 100%
+      background-position-y 30%
+
+    .wrapper
+      width column * 8
+      left 50%
+      text-align center
+
+    h1
+      GentiumBold()
+      letter-spacing -0.04em
+      font-size 8em
+      margin-top 1.75em
+      margin-bottom 0
+      text-rendering optimizeLegibility
+      color wyMagenta
+      position relative
+      left -10px
+
+      span
+        position relative
+        left -10px
+
+    h2
+      ApercuBold()
+      color rgba(255,255,255,0.8)
+      font-size 1.5em
+      margin 0
+      position relative
+      top -.75em
+      left -4px
+
+
+  #textile
+    height auto
+    GentiumBook()
+    color wyRed
+    background-color #fff
+
+    .bg
+      background-image url(urlbase 'qeros-textile.jpg')
+      background-size auto 100%
+      background-position-x left
+      left column * 10
+
+    #textile-container
+      grid()
+      padding 6em 0
+      width column * 9
+
+  #crowd
+    // background-image url(urlbase 'qeros-crowd.jpg')
+    background-position-y 80%
+  #crowd-caption p
+    width column * 11
+
+  #portrait
+    // background-image url(urlbase 'qeros-portrait.jpg')
+  #portrait-caption p
+    width column * 11
+
+  #llamas
+    // background-image url(urlbase 'qeros-llamas.jpg')
+  #llamas-caption p
+    width column * 11
+
+  #dance
+    // background-image url(urlbase 'qeros-dance.jpg')
+  #dance-caption p
+    width column * 11
+ 
+  #silhouette
+    // background-image url(urlbase 'qeros-silhouette.jpg')
+
+
+
+
+/* @media screen and (min-width: 984px) */
+@media screen and (min-width: 61.5em) 
+  #qeros
+    #textile 
+      .bg
+        background-size auto 120%
+

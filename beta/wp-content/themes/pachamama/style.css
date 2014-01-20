@@ -1,0 +1,13 @@
+/*
+Theme Name: Pacha Mama
+Author: Jake Zien
+Author URI: http://jakezien.com/
+Description: Bespoke theme for Hannah Porst and the Willka Yachay Project.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pachamama
+*/
+
+@import 'css/reset.css';
+@import 'css/style.css';
