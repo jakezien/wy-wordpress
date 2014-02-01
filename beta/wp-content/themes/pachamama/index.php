@@ -1,19 +1,33 @@
-<?php get_header(); ?>
+<?php /* Template Name: Home */ get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-		<?php if ( have_posts() ) : ?>
+<div id="blog" class="the-page">
 
-			<?php /* The loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
+  <header>
+    <div class="wrapper">
+      <h1>WY Blog</h1>
+    </div>
+  </header>
 
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
+  <section id="content">
+    <div class="wrapper">
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
+      <?php while ( have_posts() ) : the_post(); ?>
+        <div class="post">
+          <h2><?php the_title(); ?></h2>
+          <div class="post-meta">
+            <?php the_date(); ?>
+          </div>
+          <div class="post-content">
+            <?php the_content(); ?>
+          </div>
+          <div class="post-footer">
+          </div>
+        </div>
+      <?php endwhile; ?>      
 
+    </div>
+  </section>
+
+</div>
+      
 <?php get_footer(); ?>

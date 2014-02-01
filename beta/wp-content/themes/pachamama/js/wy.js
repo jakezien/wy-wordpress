@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
   var fixedImgs;
   var $donate = $('#donate');
   var $donateBtn = $('#donate-btn');
+  var isAnimatingMenu = false;
 
   var checkMobile = function(){
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -62,16 +63,7 @@ jQuery(document).ready(function($){
     var $cover = $('.cover');
     var $next = $cover.next();
 
-    if (page === 'expeditions') {
-      var $cover = $('#cover');
-      var $h1 = $('h1');
-      var range = 200;
-      var newY = $(document).scrollTop() / $cover.outerHeight() * -range;
-      $h1.css({'-webkit-transform':'translate3d( 0,' + newY + 'px, 0 )',
-                 '-ms-transform':'translate3d( 0,' + newY + 'px, 0 )',
-                 'transform':'translate3d( 0,' + newY + 'px, 0 )'});
-    }
-    else {
+    if (page === 'qeros') {
       if ($(document).scrollTop() <= $next.outerHeight()) {
         var newY = $(document).scrollTop() - $next.innerHeight();
         $next.css({'-webkit-transform':'translate3d( 0,' + newY + 'px, 0 )',
@@ -88,6 +80,15 @@ jQuery(document).ready(function($){
       var range = 200;
       var newY = $(document).scrollTop() / $cover.outerHeight() * -range;
       $grid.css({'-webkit-transform':'translate3d( 0,' + newY + 'px, 0 )',
+                 '-ms-transform':'translate3d( 0,' + newY + 'px, 0 )',
+                 'transform':'translate3d( 0,' + newY + 'px, 0 )'});
+    }
+    else {
+      var $cover = $('#cover');
+      var $h1 = $cover.find('h1');
+      var range = 60;
+      var newY = $(document).scrollTop() / $cover.outerHeight() * -range;
+      $h1.css({'-webkit-transform':'translate3d( 0,' + newY + 'px, 0 )',
                  '-ms-transform':'translate3d( 0,' + newY + 'px, 0 )',
                  'transform':'translate3d( 0,' + newY + 'px, 0 )'});
     }
@@ -113,18 +114,8 @@ jQuery(document).ready(function($){
     });
   }
 
-  var moveDonate = function(){
-    var y = $(document).scrollTop();
-    if ( ! $donate.hasClass('hidden') ) {
-      $donate.css({ '-webkit-transform':'translate3d( 0, ' + y + 'px, 0 )',
-                      '-ms-transform':'translate3d( 0, ' + y + 'px, 0 )',
-                      'transform':'translate3d( 0, ' + y + 'px, 0 )'});
-    }
-  }
-
   var onScroll = function(e){
     if (!isMobile) {
-      moveDonate();
       parallax();
       coverEffect();
     }
@@ -137,6 +128,9 @@ jQuery(document).ready(function($){
   var setupClicks = function(){
     $('#hide-donate').click(hideDonate);
     $('#donate-btn').click(showDonate);
+    $('#show-menu').click(menuClicked);
+    // $('#hide-menu').click(showMenu);
+
     $('.cover').click(function(){
       $('html, body').animate({ scrollTop : $('.cover').outerHeight() - 20 }, 1000, 'easeOutExpo');
     });
@@ -146,7 +140,6 @@ jQuery(document).ready(function($){
     $('#donate').removeClass('display-none')
     setTimeout(function(){
       $('#donate').removeClass('hidden')
-      moveDonate();
     }, 10)
     $('.the-page').css('-webkit-filter','blur(0)');
     $('.the-page').css('-webkit-filter','blur(16px)');
@@ -158,6 +151,39 @@ jQuery(document).ready(function($){
       $('.the-page').css('-webkit-filter','');
       $('#donate').addClass('display-none')
     }, 1000)
+  }
+  var showMenu = function(e){
+    if (isAnimatingMenu) return;
+    $('#menu-overlay').removeClass('display-none')
+    setTimeout(function(){
+      $('#menu-overlay').removeClass('hidden')
+    }, 10)
+    $('.the-page').css('-webkit-filter','blur(0)');
+    $('.the-page').css('-webkit-filter','blur(16px)');
+  }
+  var hideMenu = function(e){
+    if (isAnimatingMenu) return;
+    $('.the-page').css('-webkit-filter','blur(0)');
+    $('#menu-overlay').addClass('hidden')
+    setTimeout(function(){
+      $('.the-page').css('-webkit-filter','');
+      $('#menu-overlay').addClass('display-none')
+    }, 600)
+  }
+
+  var menuClicked = function(e){
+    if (isAnimatingMenu) return;
+
+    if ($('#menu-overlay').hasClass('display-none')) { 
+      showMenu();
+      isAnimatingMenu = true;
+    }
+    else {
+      hideMenu();
+      isAnimatingMenu = true;
+    }
+
+    setTimeout(function(){isAnimatingMenu = false}, 600);
   }
 
   checkMobile();

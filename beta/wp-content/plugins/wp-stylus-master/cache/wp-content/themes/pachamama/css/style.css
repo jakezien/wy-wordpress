@@ -240,10 +240,6 @@ h1 {
 *  5.55555% | %  25  50  75  100 | 5.55555%
 *
 */
-header,
-#twoway {
-  margin: 0 5.555555555555555%;
-}
 h1,
 h2 {
   margin: 0.9230769230769231em 0 1.3846153846153846em;
@@ -335,10 +331,6 @@ h3 {
 /* Reset baseline grid to 16/16 = 1.0 */
     font-size: 1em;
   }
-  header,
-  #twoway {
-    margin: 0 16.666666666666664%;
-  }
 }
 /* @media screen and (min-width: 1200px) */
 @media screen and (min-width: 75em) {
@@ -352,10 +344,6 @@ h3 {
   body {
 /* Reset baseline grid to 16/16 = 1.0 */
     font-size: 1em;
-  }
-  header,
-  #twoway {
-    margin: 0 27.77777777777778%;
   }
 }
 /* @media screen and (min-width: 1680px) */
@@ -376,14 +364,6 @@ h3 {
 */
 /* @media screen and (min-width: 1872px) */
 @media screen and (min-width: 117em) {
-  header,
-  #twoway {
-    margin: 0 5.555555555555555%;
-  }
-  header .wrapper {
-    width: 37.5%;
-    margin-left: 25%;
-  }
   #twoway .wrapper {
     width: 25%;
   }
@@ -451,7 +431,7 @@ h3 {
 }
 #donate {
   transition: opacity 0.66s ease-in-out;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -606,7 +586,7 @@ h3 {
   position: relative;
   top: -0.25em;
 }
-#expeditions #text {
+#expeditions section {
   margin-left: 5.55555%;
   margin-right: 5.55555%;
   position: relative;
@@ -614,10 +594,10 @@ h3 {
   padding: 4em 0 5em 0;
   color: #073f6e;
 }
-#expeditions #text .wrapper {
+#expeditions section .wrapper {
   width: 44.44444444444444%;
 }
-#expeditions #text h2 {
+#expeditions section h2 {
   font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   -moz-font-feature-settings: "kern" 1;
@@ -633,7 +613,7 @@ h3 {
   line-height: 1.25em;
   margin: 0 0 1em 0;
 }
-#expeditions #text p {
+#expeditions section p {
   font-family: "Gentium Book Basic", "Baskerville", "Georgia", "Times", serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
@@ -645,6 +625,66 @@ h3 {
   font-feature-settings: "kern" 1;
   font-size: 2em;
   line-height: 1.25em;
+}
+#foundation #cover {
+  height: 80%;
+}
+#foundation #cover .bg {
+  background-image: url("../images/foundation-cover.jpg");
+  background-position: center center;
+}
+#foundation #cover .grid {
+  display: table;
+  width: 88.88888888888889%;
+  height: 100%;
+}
+#foundation #cover .grid .wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+#foundation #cover .grid h1 {
+  margin: 0;
+  padding: 0 0 0.25em 0;
+  font-family: "Gentium Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 8em;
+  letter-spacing: -0.05em;
+  color: #fff;
+  text-align: center;
+}
+#foundation #cover .grid h1 span {
+  position: relative;
+  left: -0.05em;
+}
+#blog header,
+#blog #content {
+  margin-left: 5.55555%;
+  margin-right: 5.55555%;
+  position: relative;
+  z-index: 0;
+}
+#blog .post {
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 77.77777777777777%;
+  margin-left: 11.11111111111111%;
+}
+#blog .post-footer {
+  margin: 2em 0 8em 0;
+  border-top: 2px solid #eee;
 }
 html,
 body {
@@ -726,5 +766,94 @@ section {
   position: absolute;
   top: 0;
   left: 0;
+}
+header {
+  z-index: 3;
+}
+header #show-menu {
+  position: fixed;
+  z-index: 3;
+  top: 2em;
+  left: 0;
+  width: 1.5em;
+  height: 1.5em;
+  padding: 1em;
+  cursor: pointer;
+}
+header #show-menu div {
+  width: 100%;
+  height: 4px;
+  margin: 0 0 5px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  background: #fff;
+  transition: background-color 0.15s;
+}
+header #show-menu:hover div {
+  background: #d83027;
+}
+header #menu-overlay {
+  transition: opacity 0.66s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(206,221,255,0.55);
+  z-index: 2;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.4);
+}
+header #menu-overlay.display-none {
+  display: none;
+}
+header #menu-overlay.hidden {
+  opacity: 0;
+}
+header #menu-overlay #menu {
+  margin-left: 5.55555%;
+  margin-right: 5.55555%;
+  position: relative;
+  z-index: 0;
+  position: relative;
+  left: 11.11111111111111%;
+}
+header #menu-overlay #menu h1 {
+  font-family: "Gentium Book Basic", "Baskerville", "Georgia", "Times", serif;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  letter-spacing: -0.05em;
+  font-size: 6.66em;
+  line-height: 0.9em;
+  width: 50%;
+  color: #d83027;
+}
+header #menu-overlay #menu li {
+  display: inline-block;
+  margin: 0 5.555555555555555% 0 0;
+  font-family: "Apercu Bold", "Helvetica Neue", Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern=1";
+  -ms-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.5em;
+  text-align: center;
+  letter-spacing: -0.05em;
+  width: 11.11111111111111%;
+}
+header #menu-overlay #menu li a {
+  color: #d83027;
+  text-decoration: none;
+  margin: 0 auto;
 }
 

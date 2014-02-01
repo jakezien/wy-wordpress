@@ -27,4 +27,15 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<header></header>
+	<header>
+		<div id="show-menu"><div></div><div></div><div></div></div>
+		<div id="menu-overlay" class="display-none hidden">
+			<div id="hide-menu"></div>
+			<div id="menu">
+				<div class="wrapper">
+					<h1>Willka Yachay</h1>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+				</div>
+			</div>
+		</div>
+	</header>
